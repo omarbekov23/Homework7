@@ -11,7 +11,7 @@ public class User {
     private String name;
 
     @Column
-    private String lastName;
+    private String last_Name;
 
     @Column
     private Byte age;
@@ -19,9 +19,9 @@ public class User {
     public User() {
     }
 
-    public User(String name, String lastName, Byte age) {
+    public User(String name, String last_Name, Byte age) {
         this.name = name;
-        this.lastName = lastName;
+        this.last_Name = last_Name;
         this.age = age;
     }
 
@@ -41,12 +41,12 @@ public class User {
         this.name = name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLast_Name() {
+        return last_Name;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLast_Name(String last_Name) {
+        this.last_Name = last_Name;
     }
 
     public Byte getAge() {

@@ -12,15 +12,15 @@ public class UserServiceTest {
 
     private final UserService userService = new UserServiceImpl();
 
-    private final String testName = "Kanat";
-    private final String testLastName = "Subanov";
+    private final String testName = "Erlan";
+    private final String testLast_Name = "Omarbekov";
     private final byte testAge = 23;
 
     @Test
     public void dropUsersTable() {
         try {
             userService.dropUsersTable();
-            userService.dropUsersTable();
+           //userService.dropUsersTable();
         } catch (Exception e) {
             Assert.fail("При тестировании удаления таблицы произошло исключение\n" + e);
         }
@@ -29,7 +29,7 @@ public class UserServiceTest {
     @Test
     public void createUsersTable() {
         try {
-            userService.dropUsersTable();
+           // userService.dropUsersTable();
             userService.createUsersTable();
         } catch (Exception e) {
             Assert.fail("При тестировании создания таблицы пользователей произошло исключение\n" + e.getMessage());
@@ -37,19 +37,19 @@ public class UserServiceTest {
     }
 
     @Test
-    public void saveUser() {
+    public void saveUsers() {
         try {
             userService.dropUsersTable();
             userService.createUsersTable();
-            userService.saveUser(testName, testLastName, testAge);
+            userService.saveUser(testName, testLast_Name, testAge);
 
             User user = userService.getAllUsers().get(0);
 
             if (!testName.equals(user.getName())
-                    || !testLastName.equals(user.getLastName())
+                    || !testLast_Name.equals(user.getLast_Name())
                     || testAge != user.getAge()
             ) {
-                Assert.fail("User был некорректно добавлен в базу данных");
+                Assert.fail("Users был некорректно добавлен в базу данных");
             }
 
         } catch (Exception e) {
@@ -58,11 +58,11 @@ public class UserServiceTest {
     }
 
     @Test
-    public void removeUserById() {
+    public void removeUsersById() {
         try {
             userService.dropUsersTable();
             userService.createUsersTable();
-            userService.saveUser(testName, testLastName, testAge);
+            userService.saveUser(testName, testLast_Name, testAge);
             userService.removeUserById(1L);
         } catch (Exception e) {
             Assert.fail("При тестировании удаления пользователя по id произошло исключение\n" + e);
@@ -74,7 +74,7 @@ public class UserServiceTest {
         try {
             userService.dropUsersTable();
             userService.createUsersTable();
-            userService.saveUser(testName, testLastName, testAge);
+            userService.saveUser(testName, testLast_Name, testAge);
             List<User> userList = userService.getAllUsers();
 
             if (userList.size() != 1) {
@@ -90,7 +90,7 @@ public class UserServiceTest {
         try {
             userService.dropUsersTable();
             userService.createUsersTable();
-            userService.saveUser(testName, testLastName, testAge);
+            userService.saveUser(testName, testLast_Name, testAge);
             userService.cleanUsersTable();
 
             if (userService.getAllUsers().size() != 0) {
